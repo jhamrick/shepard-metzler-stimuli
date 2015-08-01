@@ -1,5 +1,5 @@
 import bpy
-import utils
+import blender_utils as utils
 
 # delete everything
 bpy.ops.object.select_all(action='SELECT')
@@ -26,7 +26,6 @@ world.zenith_color = (1, 1, 1)
 world.ambient_color = (0, 0, 0)
 
 # create the shepard stimulus
-stim_id = "x_3_y_2_z_3_x_2"
-bpy.ops.import_scene.obj(filepath="stimuli/obj/{}.obj".format(stim_id))
+stim_id = "A_x_2_y_3_z_2_x_-3"
+bpy.ops.import_scene.obj(filepath="stimuli/mesh/{}.obj".format(stim_id))
 stim = bpy.data.objects[stim_id]
-material = utils.new_material("Material.001", stim)
