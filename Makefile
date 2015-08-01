@@ -1,9 +1,13 @@
-.PHONY: view generate
+.PHONY: all generate generate_meshes generate_scenes edit preview render
 
-all:
+all: generate render
 
-generate:
+generate: generate_meshes generate_scenes
+
+generate_meshes:
 	blender -b -P generate_meshes.py
+
+generate_scenes:
 	python generate_scenes.py
 
 edit:

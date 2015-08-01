@@ -13,7 +13,7 @@ def new_stimulus(stim_id):
     # add a bevel to the cube object
     cube.select = True
     bpy.ops.object.editmode_toggle()
-    bpy.ops.mesh.bevel(offset_type='PERCENT', offset=2.5)
+    bpy.ops.mesh.bevel(offset_type='PERCENT', offset=3, segments=15)
     bpy.ops.object.editmode_toggle()
     cube.select = False
 
