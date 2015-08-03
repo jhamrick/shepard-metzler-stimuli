@@ -77,5 +77,7 @@ for mesh in meshes:
 
         # save it out to file
         scene_name = "{}_xrot_{:03d}_zrot_{:03d}_yrot_{:03d}.xml".format(stim_id, x_rot, z_rot, y_rot)
-        with open(os.path.join("stimuli", "scene", stim_id, scene_name), "w") as fh:
+        scene_path = os.path.join("stimuli", "scene", stim_id, scene_name)
+        print(scene_path)
+        with open(scene_path, "w") as fh:
             fh.write(scene)
