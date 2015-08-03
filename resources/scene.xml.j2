@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene version="0.5.0">
+    <sensor type="perspective">
+        <!-- Camera parameters -->
+        <float name="fov" value="38"/>
+        <string name="fovAxis" value="x"/>
+        <float name="nearClip" value="0.1"/>
+        <float name="farClip" value="10000"/>
+
+        <!-- This is the camera position and rotation -->
+        <transform name="toWorld">
+            <lookat target="0, {{ cam_look }}, 0" origin="-51.268510564463085, 24, 23.906899098409585" up="0, 1, 0"/>
+        </transform>
+
+        <!-- This goes with the adaptive sampler below -->
+        <sampler type="independent">
+        <!-- <sampler type="ldsampler"> -->
+            <integer name="sampleCount" value="64"/>
+        </sampler>
+
+        <!-- This specifies the format that the rendering should be saved as -->
+        <film type="ldrfilm">
+            <boolean name="banner" value="false"/>
+            <float name="exposure" value="0"/>
+            <float name="gamma" value="-1"/>
+            <string name="pixelFormat" value="rgb"/>
+            <string name="tonemapMethod" value="gamma"/>
+            <rfilter type="box"/>
+
+            <integer name="width" value="1280"/>
+            <integer name="height" value="768"/>
+
+            <integer name="cropOffsetX" value="384"/>
+            <integer name="cropOffsetY" value="137"/>
+            <integer name="cropWidth" value="512"/>
+            <integer name="cropHeight" value="512"/>
+        </film>
+    </sensor>
+
+    <!-- This is the adaptive sampler (will sample until enough samples are taken) -->
+    <integrator type="adaptive">
+        <integrator type="path"/>
+        <float name="maxError" value="0.05"/>
+    </integrator>
+
+    <!-- Environment map -->
+    <emitter type="envmap" id="environment">
+        <string name="filename" value="resources/envmap.exr"/>
+        <transform name="toWorld">
+            <rotate x="1" angle="90"/>
+            <rotate y="1" angle="0"/>
+            <rotate z="1" angle="0"/>
+            <translate x="0" y="0" z="0"/>
+        </transform>
+        <float name="scale" value="1.2"/>
+        <float name="gamma" value="1"/>
+    </emitter>
+
+    <!-- Plastic material -->
+    <bsdf type="roughplastic" id="plastic">
+        <float name="intIOR" value="1.6"/>
+        <float name="alpha" value="0.1"/>
+        <srgb name="diffuseReflectance" value="{{ color }}"/>
+        <spectrum name="specularReflectance" value="0.7"/>
+    </bsdf>
+
+    <!-- Lambertian floor material -->
+    <bsdf type="diffuse" id="lambertian">
+        <srgb name="reflectance" value="#FFFFFF"/>
+    </bsdf>
+
+    <!-- Ground mesh -->
+    <shape type="obj">
+        <string name="filename" value="resources/floor.obj"/>
+        <transform name="toWorld">
+            <scale z="1.2"/>
+            <translate y="-0.15"/>
+            <rotate y="1" angle="45"/>
+        </transform>
+        <ref id="lambertian"/>
+    </shape>
+
+    <!-- Stimulus mesh -->
+    <shape type="obj">
+        <string name="filename" value="stimuli/mesh/{{ stim_id }}.obj"/>
+        <transform name="toWorld">
+            <rotate x="1" angle="{{ x_rot }}"/>
+            <rotate z="1" angle="{{ z_rot }}"/>
+            <rotate y="1" angle="{{ y_rot }}"/>
+            <translate y="{{ y_trans }}"/>
+        </transform>
+        <ref id="plastic"/>
+    </shape>
+</scene>
