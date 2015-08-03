@@ -1,0 +1,5 @@
+numpy
+scipy
+ipython
+ipdb
+jinja2
