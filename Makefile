@@ -14,7 +14,7 @@ edit:
 	blender -P view.py
 
 preview:
-	mtsgui stimuli/scene/A_x_2_y_3_z_2_x_-3/A_x_2_y_3_z_2_x_-3_xrot_000_yrot_000_zrot_*.xml
+	mtsgui stimuli/scene/A_x_2_y_3_z_2_x_-3/A_x_2_y_3_z_2_x_-3_xrot_270_zrot_090_yrot_0*.xml
 
 render:
 	python render_images.py

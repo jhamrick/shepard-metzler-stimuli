@@ -51,8 +51,9 @@ for mesh in meshes:
     if not os.path.exists(os.path.join("stimuli", "scene", stim_id)):
         os.mkdir(os.path.join("stimuli", "scene", stim_id))
 
-    rots = itertools.product([0, 90, 180, 270], range(0, 360, 40), [0, 90, 180, 270])
-    for x_rot, y_rot, z_rot in rots:
+    sides = [[0, 0], [0, 90], [0, 180], [0, 270], [90, 0], [270, 90]]
+    rots = itertools.product(sides, range(0, 360, 20))
+    for (x_rot, z_rot), y_rot in rots:
 
         # create a seed based on the stimulus id, so we will always pick the same
         # color for a given stimulus
@@ -75,6 +76,6 @@ for mesh in meshes:
             x_rot=x_rot, y_rot=y_rot, z_rot=z_rot, y_trans=y_trans)
 
         # save it out to file
-        scene_name = "{}_xrot_{:03d}_yrot_{:03d}_zrot_{:03d}.xml".format(stim_id, x_rot, y_rot, z_rot)
+        scene_name = "{}_xrot_{:03d}_zrot_{:03d}_yrot_{:03d}.xml".format(stim_id, x_rot, z_rot, y_rot)
         with open(os.path.join("stimuli", "scene", stim_id, scene_name), "w") as fh:
             fh.write(scene)
