@@ -51,7 +51,7 @@ for mesh in meshes:
     if not os.path.exists(os.path.join("stimuli", "scene", stim_id)):
         os.mkdir(os.path.join("stimuli", "scene", stim_id))
 
-    sides = [[0, 0], [0, 90], [0, 180], [0, 270], [90, 0], [270, 90]]
+    sides = [[0, 0], [0, 90], [0, 180], [0, 270], [90, 0], [270, 0]]
     rots = itertools.product(sides, range(0, 360, 20))
     for (x_rot, z_rot), y_rot in rots:
 
