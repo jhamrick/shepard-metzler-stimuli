@@ -32,7 +32,7 @@ def parse_stim_id(stim_id):
 
     # we actually have one block too many, so get rid of the first block and
     # then adjust the rest of the blocks
-    block_locs = np.array(block_locs[1:])
+    block_locs = np.array(block_locs[1:], dtype=float)
     block_locs -= block_locs[0]
 
     # now center the block locations

@@ -68,7 +68,7 @@ for mesh in meshes:
         block_locs = utils.parse_stim_id(stim_id)
         new_block_locs = rotate_xyz(block_locs, x_rot, z_rot, y_rot)
         z_locs = new_block_locs[:, 2]
-        y_trans = cam_look = ((np.max(z_locs) - np.min(z_locs)) / 2.0) + 1
+        y_trans = cam_look = ((np.max(z_locs) - np.min(z_locs)) / 2.0) + 10
 
         # render the template
         scene = template.render(
