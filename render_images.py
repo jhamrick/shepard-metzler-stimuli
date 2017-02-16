@@ -17,8 +17,8 @@ for stim_id in sorted(os.listdir(os.path.join("stimuli", "scene"))):
     for scene in sorted(glob(os.path.join("stimuli", "scene", stim_id, "*.xml"))):
         filename = "{}.png".format(os.path.splitext(os.path.basename(scene))[0])
         result = os.path.join("stimuli", "image", stim_id, filename)
-        if os.path.exists(filename):
-            print("Already exists: {}".format(filename))
+        if os.path.exists(result):
+            print("Already exists: {}".format(result))
             continue
 
         cmd = ["mitsuba", "-x"] + extra_args + ["-o", result, scene]
