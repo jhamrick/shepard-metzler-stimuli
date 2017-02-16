@@ -9,7 +9,7 @@
 
         <!-- This is the camera position and rotation -->
         <transform name="toWorld">
-            <lookat target="0, {{ cam_look }}, 0" origin="-51.268510564463085, 33, 23.906899098409585" up="0, 1, 0"/>
+            <lookat target="0, {{ cam_look }}, 0" origin="-51.268510564463085, 24, 23.906899098409585" up="0, 1, 0"/>
         </transform>
 
         <!-- This goes with the adaptive sampler below -->
@@ -74,7 +74,7 @@
         <string name="filename" value="resources/floor.obj"/>
         <transform name="toWorld">
             <scale z="1.2"/>
-            <translate y="-0.15"/>
+            <translate y="-50.15"/>
             <rotate y="1" angle="22.5"/>
         </transform>
         <ref id="lambertian"/>

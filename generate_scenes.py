@@ -61,14 +61,14 @@ for mesh in meshes:
         np.random.seed(seed)
 
         # generate the color
-        rgb = [int(x * 255) for x in hls_to_rgb(np.random.rand(), 0.5, 0.6)]
+        rgb = [int(x * 255) for x in hls_to_rgb(0.7, 0.5, 0.6)]
         color = "#{:02x}{:02x}{:02x}".format(*rgb)
 
         # figure out the camera position
         block_locs = utils.parse_stim_id(stim_id)
         new_block_locs = rotate_xyz(block_locs, x_rot, z_rot, y_rot)
         z_locs = new_block_locs[:, 2]
-        y_trans = cam_look = ((np.max(z_locs) - np.min(z_locs)) / 2.0) + 10
+        y_trans = cam_look = ((np.max(z_locs) - np.min(z_locs)) / 2.0) + 1
 
         # render the template
         scene = template.render(
